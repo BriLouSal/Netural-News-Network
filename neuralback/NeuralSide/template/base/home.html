@@ -1,0 +1,69 @@
+<!-- This will be the home where we'll have a navbar with Spors, Global News, an -->
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'style.css' %}">
+   <title>Document</title>
+   
+</head>
+<body>
+   {% block content %}
+
+    <div class="greet_user">
+
+   {% if user.is_authenticated %}
+      <p> Welcome! {{user.username}}</p>
+
+      <div class="trending_stock">
+         
+
+      </div>
+   {% else %}
+
+
+
+
+   <!-- Div: Links Navbar -->
+     <div class="navbar">
+    <a href="{% url 'assistance' %}">Support</a>
+    <a href="{% url 'room' %}">Portfolio</a>
+    <a href="{% url 'home' %}">Home</a>
+
+
+    <!-- For Portfolio, I wanna have a redirection if the condiition is not met that will make sure users are signed up --> 
+ </div>
+
+ 
+<!-- 
+   <div class="search-bar">
+      <h1 id="market">Netural News Network</h1>
+      <div class="search-container">
+         <form method="GET", action="{% url 'search' %}">
+          <input type="text" placeholder="Search for Stocks..." name="search" required>
+         <button type="submit">Search</button>
+
+       </form>
+
+      
+      </div>
+
+   </div>
+ -->
+
+
+
+
+
+
+
+ {% endblock content %}
+ 
+</body>
+</html>

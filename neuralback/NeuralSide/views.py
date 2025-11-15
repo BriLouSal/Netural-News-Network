@@ -8,3 +8,5 @@ from django.shortcuts import render, request
 
 def home(request):
     return render('base/home.html')
+
+
