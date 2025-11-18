@@ -1,2 +1,4 @@
 neuralback/NeuralSide/.env
 neuralback/NeuralSide/NCAI.py
+.venv/
+venv/
