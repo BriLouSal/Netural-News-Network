@@ -51,9 +51,23 @@ def left_wing_bias():
     max_tokens=int(MAX_TOKEN_FOR_NEWS_SENTIMENT),
     messages =[
         {"role": "user", 
-            "content": f"Generate a news for world-news political that follows the political trend in 2025  that has right wing-bias rating of and create this news that would have major wording that is used in promiennt right-wing news network that would have such as that the bias rating is 1.00-0.90 . Create hundreds of output. The Bias should be formattable in JSON Style, do not incldue any formalities, MAKE IT ONLY JSON VALID DATASET"}
+            "content": f"Generate a news for world-news political that follows the political trend in 2025  that has left wing-bias rating of and create this news that would have major wording that is used in promiennt left-wing news network that would have such as that the bias rating is from -1.00 to -0.90 . Create hundreds of output. The Bias should be formattable in JSON Style, do not incldue any formalities, MAKE IT ONLY JSON VALID DATASET"}
     ],
 )
     return left_wing_data.content[0].text.strip()
+
+
+
+
+def netural_bias():
+    netural_wing = client.messages.create(
+    model=MODEL_AI,
+    max_tokens=int(MAX_TOKEN_FOR_NEWS_SENTIMENT),
+    messages =[
+        {"role": "user", 
+            "content": f"Generate a news for world-news political that follows the political trend in 2025  that has NO BIAS AT ALL rating of and create this news that would have major wording that is used in promiennt left-wing news network that would have such as that the bias rating is 0.00-0.0.5 . Create hundreds of output. The Bias should be formattable in JSON Style, do not incldue any formalities, MAKE IT ONLY JSON VALID DATASET"}
+    ],
+)
+    return netural_wing.content[0].text.strip()
 
 # Recreate a recursive function
