@@ -4,7 +4,7 @@ from anthropic import AnthropicVertex
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
-
+import os
 
 # Side AI Core Goals: News API
 
@@ -17,9 +17,13 @@ from json import JSONDecodeError
 
 load_dotenv()
 
+CLAUDE = os.getenv('CLAUDE')
+client = Anthropic(api_key=CLAUDE)
 
 
+MAX_TOKEN_FOR_NEWS_SENTIMENT = os.getenv('MAX_TOKEN_FOR_NEWS_SENTIMENT')
 
+MODEL_AI = os.getenv('MODEL')
 
 
 def parser():
@@ -30,16 +34,26 @@ def dataset():
 
 
 
-def left_wing_bias():
-    negative_data = client.messages.create(
+def right_wing_bias():
+    right_wing_data = client.messages.create(
     model=MODEL_AI,
     max_tokens=int(MAX_TOKEN_FOR_NEWS_SENTIMENT),
     messages =[
         {"role": "user", 
-            "content": f"Generate a news for a stock  that has positivety rating of and create this news that would have catalyst such as that the sentiment rating is 0.0-0.50. Create hundreds of output"}
+            "content": f"Generate a news for world-news political that follows the political trend in 2025  that has right wing-bias rating of and create this news that would have major wording that is used in promiennt right-wing news network that would have such as that the bias rating is 1.00-0.90 . Create hundreds of output. The Bias should be formattable in JSON Style, do not incldue any formalities, MAKE IT ONLY JSON VALID DATASET"}
     ],
 )
-    return negative_data.content[0].text.strip()
+    return right_wing_data.content[0].text.strip()
 
-def right_wing_bias():
-    pass
+def left_wing_bias():
+    left_wing_data = client.messages.create(
+    model=MODEL_AI,
+    max_tokens=int(MAX_TOKEN_FOR_NEWS_SENTIMENT),
+    messages =[
+        {"role": "user", 
+            "content": f"Generate a news for world-news political that follows the political trend in 2025  that has right wing-bias rating of and create this news that would have major wording that is used in promiennt right-wing news network that would have such as that the bias rating is 1.00-0.90 . Create hundreds of output. The Bias should be formattable in JSON Style, do not incldue any formalities, MAKE IT ONLY JSON VALID DATASET"}
+    ],
+)
+    return left_wing_data.content[0].text.strip()
+
+# Recreate a recursive function

@@ -1,0 +1,1 @@
+from NCAI import left_wing_bias, right_wing_bias
