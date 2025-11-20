@@ -40,21 +40,30 @@ def data_synthsize():
 
     # world_news = news.get_top_news()
     dict_data_news = get_news.json()
+    
+
     articles = dict_data_news.get('articles', [])
     info_list = []
 
     for news in articles:
         info_list.append({
             'title': news.get('title'),
+            'images': news.get('images'),
+            'description': news.get('description'),
+            'source': news.get('source'),
+
+            
         })
 
+    return info_list
 
-def generate_non_bias_news(dataset: dict):
-    pass
+
+
 
 
 def home(request):
-    return render('base/home.html')
+    context = {'info': data_synthsize()}
+    return render('base/home.html', context)
 
 
 
