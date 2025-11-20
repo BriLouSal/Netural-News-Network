@@ -13,9 +13,39 @@ import os
 import json
 from json import JSONDecodeError
 
+import requests
+from gnews import GNews
+
 # Json Parse
 
 load_dotenv()
+
+API_CURRENT = os.getenv('CURRENT_API')
+
+API_NEWS= os.getenv('NEWS_API')
+
+
+
+news = GNews()
+
+
+url = ('https://api.currentsapi.services/v1/latest-news?'
+    'language=us&'
+    F'apiKey={API_CURRENT}')
+
+
+
+
+response = requests.get(url)
+json_response = response.json()
+
+
+
+
+
+
+
+
 
 CLAUDE = os.getenv('CLAUDE')
 client = Anthropic(api_key=CLAUDE)
@@ -69,5 +99,10 @@ def netural_bias():
     ],
 )
     return netural_wing.content[0].text.strip()
+
+
+
+
+
 
 # Recreate a recursive function
