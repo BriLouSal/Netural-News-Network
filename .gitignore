@@ -1,8 +1,7 @@
 neuralback/NeuralSide/.env
-neuralback/NeuralSide/NCAI.py
 .venv/
 venv/
 neuralback/.env
 .env
 neuralback/NeuralSide/output.txt
-
+neuralback/NeuralSide/NCAI.py
