@@ -37,7 +37,7 @@ def generate_universal_dataset():
         "Right_wing": right_wing_bias()
     }
 
-    with open('sentiment_dataset_of_stocks.json', "w", encoding="utf-8") as f:
+    with open('sentiment_dataset_of_news_bias.json', "w", encoding="utf-8") as f:
         json.dump(dataset, f, indent=4)
 
 
